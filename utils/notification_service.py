@@ -207,7 +207,7 @@ class Message:
     @property
     def warnings(self) -> Dict:
 
-        _ = github_actions_job_links.pop("Extract warnings in CI artifacts")
+        _ = github_actions_job_links.pop("Extract warnings in CI artifacts", None)
 
         # If something goes wrong, let's avoid the CI report failing to be sent.
         button_text = "Check warnings (Link not found)"
