@@ -191,7 +191,7 @@ def run_hp_search_optuna(trainer, n_trials: int, direction: str, **kwargs) -> Be
         callbacks = kwargs.pop('callbacks', None)
         n_jobs = kwargs.pop("n_jobs", 1)
         study = optuna.create_study(direction=direction, **kwargs)
-        study.optimize(_objective, n_trials=n_trials, timeout=timeout, n_jobs=n_jobs)
+        study.optimize(_objective, n_trials=n_trials, timeout=timeout, n_jobs=n_jobs, callbacks=callbacks)
         best_trial = study.best_trial
         return BestRun(str(best_trial.number), best_trial.value, best_trial.params)
     else:
